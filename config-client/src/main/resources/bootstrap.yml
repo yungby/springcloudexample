@@ -5,7 +5,7 @@ spring:
       label: master
       uri: http://localhost:5588/
   application:
-    name: demo
+    name: config-client
 server:
   port: 5589
 
