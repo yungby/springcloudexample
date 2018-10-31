@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: http://localhost:5588/
+  application:
+    name: demo
+server:
+  port: 5589
+
