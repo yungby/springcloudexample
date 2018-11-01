@@ -1,6 +1,5 @@
 server:
   port: 5588
-
 spring:
   application:
     name: config-server
@@ -8,18 +7,22 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/yungby/configserver.git #ÅäÖÃGit²Ö¿âÎ»ÖÃ¡£
-          searchPaths: config-repo #ÅäÖÃ²Ö¿âÂ·¾¶ÏÂµÄÏà¶ÔËÑË÷Î»ÖÃ£¬¿ÉÒÔÅäÖÃ¶à¸ö¡£
-          username: yungby  #·ÃÎÊ Git ²Ö¿âµÄÓÃ»§Ãû¡£
-          password: yungby1989 #·ÃÎÊ Git ²Ö¿âµÄÓÃ»§ÃÜÂë¡£
-          label: master #ÅäÖÃ²Ö¿âµÄ·ÖÖ§
-          ###Èç¹ûGit²Ö¿âÎª¹«¿ª²Ö¿â£¬¿ÉÒÔ²»ÌîĞ´ÓÃ»§ÃûºÍÃÜÂë£¬Èç¹ûÊÇË½ÓĞ²Ö¿âĞèÒªÌîĞ´¡£
+          uri: https://github.com/yungby/configserver.git #é…ç½®Gitä»“åº“ä½ç½®ã€‚
+          searchPaths: config-repo #é…ç½®ä»“åº“è·¯å¾„ä¸‹çš„ç›¸å¯¹æœç´¢ä½ç½®ï¼Œå¯ä»¥é…ç½®å¤šä¸ªã€‚
+          username: yungby  #è®¿é—® Git ä»“åº“çš„ç”¨æˆ·åã€‚
+          password: yungby1989 #è®¿é—® Git ä»“åº“çš„ç”¨æˆ·å¯†ç ã€‚
+          label: master #é…ç½®ä»“åº“çš„åˆ†æ”¯
+          ###å¦‚æœGitä»“åº“ä¸ºå…¬å¼€ä»“åº“ï¼Œå¯ä»¥ä¸å¡«å†™ç”¨æˆ·åå’Œå¯†ç ï¼Œå¦‚æœæ˜¯ç§æœ‰ä»“åº“éœ€è¦å¡«å†™ã€‚
   security:
     user:
       name: admin
       password: 123456
-
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:123456@localhost:8761/eureka/ #ÅäÖÃ·şÎñ×¢²áÖĞĞÄ
+      defaultZone: http://admin:123456@localhost:8761/eureka/ #é…ç½®æœåŠ¡æ³¨å†Œä¸­å¿ƒ
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info

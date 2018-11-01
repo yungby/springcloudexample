@@ -3,9 +3,13 @@ spring:
     config:
       profile: dev
       label: master
-      uri: http://localhost:5588/
+      uri: http://admin:123456@localhost:5588/
   application:
     name: config-client
 server:
   port: 5589
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
