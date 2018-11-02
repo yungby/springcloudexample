@@ -29,7 +29,7 @@ public class ServiceZuulApplication {
 
     public class TokenFilter extends ZuulFilter {
 
-        private final Logger logger = LoggerFactory.getLogger(TokenFilter.class);
+        private final Logger log = LoggerFactory.getLogger(TokenFilter.class);
 
         @Override
         public String filterType() {
@@ -50,23 +50,20 @@ public class ServiceZuulApplication {
         public Object run() {
             RequestContext ctx = RequestContext.getCurrentContext();
             HttpServletRequest request = ctx.getRequest();
-
-            logger.info("--->>> TokenFilter {},{}", request.getMethod(), request.getRequestURL().toString());
-
-            String token = request.getParameter("token");// 获取请求的参数
-
-            if (StringUtils.isNotBlank(token)) {
-                ctx.setSendZuulResponse(true); //对请求进行路由
-                ctx.setResponseStatusCode(200);
-                ctx.set("isSuccess", true);
-                return null;
-            } else {
-                ctx.setSendZuulResponse(false); //不对其进行路由
-                ctx.setResponseStatusCode(400);
-                ctx.setResponseBody("token is empty");
-                ctx.set("isSuccess", false);
+            log.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
+            Object accessToken = request.getParameter("token");
+            if (accessToken == null) {
+                log.warn("token is empty");
+                ctx.setSendZuulResponse(false);
+                ctx.setResponseStatusCode(401);
+                try {
+                    ctx.getResponse().getWriter().write("token is empty");
+                } catch (Exception e) {
+                }
                 return null;
             }
+            log.info("ok");
+            return null;
         }
 
     }
