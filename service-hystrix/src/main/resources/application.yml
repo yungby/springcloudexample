@@ -5,18 +5,13 @@ spring:
       label: master
       uri: http://admin:123456@localhost:5588/
   application:
-    name: service-zuul
+    name: service-hystrix
 eureka:
   client:
     serviceUrl:
       defaultZone: http://admin:123456@localhost:8761/eureka/
-zuul:
-  routes:
-    config-client:
-      path: /config-client/**
-      serviceId: config-client
 server:
-  port: 5590
+  port: 5592
 management:
   endpoints:
     web:
