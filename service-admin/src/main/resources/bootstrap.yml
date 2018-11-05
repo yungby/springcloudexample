@@ -5,7 +5,7 @@ spring:
       label: master
       uri: http://admin:123456@localhost:5588/
   application:
-    name: admin-service
+    name: service-admin
   security:
     user:
       name: admin
