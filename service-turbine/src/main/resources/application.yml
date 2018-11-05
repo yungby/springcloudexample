@@ -1,0 +1,5 @@
+server:
+  port: 5592
+spring:
+  application:
+    name: turbine-service
